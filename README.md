@@ -66,7 +66,7 @@ The intuition is very simple - We only calculate upper triangular parts of the r
 
 This design effectively saves almost half the computation in GEMM (depending on the size of the matrix).
 
-In our test (RTX 4090) this simple mechanism saves about half the compute time on matrices of dimension 8192. Do note that the kernel is slower than native implementation for they involves relatively small number of thread blocks and thus cannot exploit the block-wise early  :
+In our test (RTX 4090) this simple mechanism saves about half the compute time on matrices of dimension 8192. Do note that the kernel is slower than native implementation for they involves relatively small number of thread blocks and thus cannot exploit the block-wise early exiting:
 
 ![design of matmul_transpose kernel](assets/benchmark.png)
 
